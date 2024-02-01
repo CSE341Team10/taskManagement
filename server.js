@@ -13,7 +13,7 @@ const routes = require("./routes");
 const passport = require("passport");
 const GitHubStrategy = require("passport-github2").Strategy;
 const session = require("express-session");
-const { User } = require("./models");
+const { User } = require("./models/users.js");
 
 // Use cors middleware
 app
@@ -107,7 +107,7 @@ app.use("/", routes);
 /******************************************
  * Server Setup
  ******************************************/
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 7100;
 
 // Use the Mongoose connection from mongo.js
 mongoDB

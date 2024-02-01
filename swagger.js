@@ -6,7 +6,7 @@ const doc = {
         title: "CSE341 Node.js",
         description: "Node.js assignment for CSE341",
     },
-    host: "localhost:7000",
+    host: "localhost:7100",
     schemes: ['http'],
 };
 

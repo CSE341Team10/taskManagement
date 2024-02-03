@@ -1,55 +1,69 @@
 const User = require("../models/userModels.js");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-usersController = {};
+const usersController = {};
 
 /*********************************************************
  * Function to get a list of all user profiles from the database.
  ********************************************************/
 usersController.getAllProfiles = async function (req, res) {
-  //swagger.tags = ['Profile Management']
-  //swagger.description = ['This is to get a list of all user profiles from the database.']
-  try {
-    const profiles = await User.find({});
-    return res.json(profiles);
-  } catch (err) {
-    console.error("Error fetching medications:", err);
-    res.status(500).json({ error: "Internal Server Error." });
-  }
+    //swagger.tags = ['Profile Management']
+    //swagger.description = ['This is to get a list of all user profiles from the database.']
+    try {
+        const profiles = await User.find({});
+        return res.json(profiles);
+    } catch (err) {
+        console.error("Error fetching medications:", err);
+        res.status(500).json({ error: "Internal Server Error." });
+    }
 };
 
 /*********************************************************
  * Function to update the user's profile
  *********************************************************/
-  //swagger.tags = ['Profile Management']
-  //swagger.description = ['This is to get a list of all user profiles from the database.']
+//swagger.tags = ['Profile Management']
+//swagger.description = ['This is to update a user in the database.']
 usersController.updateUserProfile = async function (req, res) {
-  try {
-    const githubUserId = req.params;
-    const { displayName, email } = req.body;
+    try {
+        const githubUserId = req.params.id;
+        const { username, displayName, firstName, lastName, userRole, email, password, profilePic } = req.body;
 
-    updateFields = {
-      displayName,
-      email,
-    };
+        updateFields = {
+            username,
+            displayName,
+            firstName,
+            lastName,
+            userRole,
+            email,
+            password,
+            profilePic,
+        };
 
-    const updatedProfile = await User.findOneAndUpdate(
-      githubUserId,
-      updateFields,
-      {
-        new: true,
-      }
-    );
+        if (password && password !== "not provided") {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            updateFields.password = hashedPassword;
+        }
 
-    if (updatedProfile) {
-      res.json({ message: `${updatedProfile.displayName} has been updated successfully!`, });
-    } else {
-      res.status(404).json({ error: "User profile not found." });
+        const updatedProfile = await User.findOneAndUpdate(
+            { githubUserId: githubUserId },
+            updateFields,
+            {
+                new: true,
+            }
+        );
+
+        if (updatedProfile) {
+            res.json({
+                message: `${updatedProfile.displayName} has been updated successfully!`,
+            });
+        } else {
+            res.status(404).json({ error: "User profile not found." });
+        }
+    } catch (error) {
+        console.error("Error updating user profile:", error);
+        res.status(500).json({ error: "Internal Server Error." });
     }
-  } catch (error) {
-    console.error("Error updating user profile:", error);
-    res.status(500).json({ error: "Internal Server Error." });
-  }
 };
 
 module.exports = usersController;

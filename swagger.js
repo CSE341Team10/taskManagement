@@ -1,5 +1,5 @@
 // auto generates swagger documentation
-const swaggerAutogen = require('swagger-autogen')();
+const swaggerAutogen = require("swagger-autogen")();
 
 const doc = {
     info: {
@@ -7,10 +7,10 @@ const doc = {
         description: "Node.js assignment for CSE341",
     },
     host: "localhost:7100",
-    schemes: ['http'],
+    schemes: ["http"],
 };
 
-const outputFile = './swagger_output.json';
-const endpointsFiles = ['./routes/index.js'];
+const outputFile = "./swagger_output.json";
+const endpointsFiles = ["./routes/index.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

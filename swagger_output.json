@@ -1,102 +1,83 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "CSE341 Node.js",
-    "description": "Node.js assignment for CSE341",
-    "version": "1.0.0"
-  },
-  "host": "localhost:7100",
-  "basePath": "/",
-  "schemes": [
-    "http"
-  ],
-  "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
+    "swagger": "2.0",
+    "info": {
+        "title": "CSE341 Node.js",
+        "description": "Node.js assignment for CSE341",
+        "version": "1.0.0"
     },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/github/callback": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/users/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "displayName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
+    "host": "localhost:7100",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+        "/users": {
+            "get": {
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
                 }
-              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+        },
+        "/users/{id}": {
+            "put": {
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "example": "any"
+                                },
+                                "displayName": {
+                                    "example": "any"
+                                },
+                                "firstName": {
+                                    "example": "any"
+                                },
+                                "lastName": {
+                                    "example": "any"
+                                },
+                                "userRole": {
+                                    "example": "any"
+                                },
+                                "email": {
+                                    "example": "any"
+                                },
+                                "password": {
+                                    "example": "any"
+                                },
+                                "profilePic": {
+                                    "example": "any"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

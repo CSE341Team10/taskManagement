@@ -11,6 +11,7 @@
     "paths": {
         "/users": {
             "get": {
+                "tags": ["User Profile Management"],
                 "description": "",
                 "responses": {
                     "200": {
@@ -23,7 +24,31 @@
             }
         },
         "/users/{id}": {
+            "get": {
+                "tags": ["User Profile Management"],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
             "put": {
+                "tags": ["User Profile Management"],
                 "description": "",
                 "parameters": [
                     {

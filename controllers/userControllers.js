@@ -20,6 +20,25 @@ usersController.getAllProfiles = async function (req, res) {
 };
 
 /*********************************************************
+ * Function to get a single user profile by githubId from the database.
+ ********************************************************/
+usersController.getUserProfileByGitHubId = async function (req, res) {
+    try {
+        const githubUserId = req.params.id;
+        const user = await User.findOne({ githubUserId: githubUserId});
+
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ error: "User not found." });
+        }
+    } catch (error) {
+        console.error("Error fetching user profile:", error);
+        res.status(500).json({ error: "Internal Server Error." });
+    }
+};
+
+/*********************************************************
  * Function to update the user's profile
  *********************************************************/
 //swagger.tags = ['Profile Management']

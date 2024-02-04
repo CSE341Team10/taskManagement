@@ -12,7 +12,7 @@
         "/users": {
             "get": {
                 "tags": ["User Profile Management"],
-                "description": "",
+                "description": "Get all users",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -26,7 +26,7 @@
         "/users/{id}": {
             "get": {
                 "tags": ["User Profile Management"],
-                "description": "",
+                "description": "Get a user by their githubUserId",
                 "parameters": [
                     {
                         "name": "id",
@@ -49,7 +49,7 @@
             },
             "put": {
                 "tags": ["User Profile Management"],
-                "description": "",
+                "description": "By using the githubUserId, update the user profile for the fields: username, displayName, firstName, lastName, userRole, email, password, profilePic. After inputting the password in the body, it will be hashed and stored in the database. The profilePic will be stored in the database as a string.",
                 "parameters": [
                     {
                         "name": "id",

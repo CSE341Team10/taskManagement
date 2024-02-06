@@ -16,22 +16,3 @@ const commentSchema = new mongoose.Schema({
 const Comment = mongoose.model('Comment', commentSchema);
 
 module.exports = Comment;
-
-
-/*
-module.exports = (mongoose) => {
-    const Comment = mongoose.model(
-      'Comments',
-      mongoose.Schema(
-        {
-          userId: String,
-          taskId: ObjectId,
-          comment: String,
-        },
-        { timestamps: true }
-      )
-    );
-  
-    return Comment;
-  };
-  */

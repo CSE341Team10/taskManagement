@@ -51,4 +51,10 @@ router.get(
  **********************************************/
 router.use("/users", isAuthenticated, require("./userRoutes"));
 
+
+/**********************************************
+ * Route to use for comments
+ **********************************************/
+router.use("/comments", require("./commentRoutes"));
+
 module.exports = router;

@@ -31,6 +31,7 @@ commentsController.getAll = async function (req, res) {
 commentsController.getCommentById = async function (req, res) {
 //#swagger.tags = ['Comments Management']
 //#swagger.description = This is to get a comment by Id from the database.
+    
     try {
         const commentId = req.params.id;
         const comment = await Comment.findOne({ _id: commentId});
@@ -50,43 +51,44 @@ commentsController.getCommentById = async function (req, res) {
  * Function to get a single comment by authorId from the database.
  ********************************************************/
 commentsController.getCommentByUserId = async function (req, res) {
-  //#swagger.tags = ['Comments Management']
-  //#swagger.description = This is to get a comment by userId from the database.
-      try {
-          const commentID = req.params.id;
-          const comment = await Comment.findOne({ userId: commentID});
-  
-          if (comment) {
-              res.json(comment);
-          } else {
-              res.status(404).json({ error: "Comment not found." });
-          }
-      } catch (error) {
-          console.error("Error fetching comment:", error);
-          res.status(500).json({ error: "Internal Server Error." });
-      }
-  };
+//#swagger.tags = ['Comments Management']
+//#swagger.description = This is to get a comment by userId from the database.
+      
+    try {
+        const commentID = req.params.id;
+        const comment = await Comment.findOne({ userId: commentID});
+
+        if (comment) {
+            res.json(comment);
+        } else {
+            res.status(404).json({ error: "Comment not found." });
+        }
+    } catch (error) {
+        console.error("Error fetching comment:", error);
+        res.status(500).json({ error: "Internal Server Error." });
+    }
+};
 
 /*********************************************************
  * Function to get a single comment by taskID from the database.
  ********************************************************/
 commentsController.getCommentByTaskId = async function (req, res) {
-  //#swagger.tags = ['Comments Management']
-  //#swagger.description = This is to get a comment by taskId from the database.
-      try {
-          const commentID = req.params.id;
-          const comment = await Comment.findOne({ taskId: commentID});
-  
-          if (comment) {
-              res.json(comment);
-          } else {
-              res.status(404).json({ error: "Comment not found." });
-          }
-      } catch (error) {
+//#swagger.tags = ['Comments Management']
+//#swagger.description = This is to get a comment by taskId from the database.
+    try {
+        const commentID = req.params.id;
+        const comment = await Comment.findOne({ taskId: commentID});
+
+        if (comment) {
+            res.json(comment);
+        } else {
+            res.status(404).json({ error: "Comment not found." });
+        }
+    } catch (error) {
           console.error("Error fetching comment:", error);
           res.status(500).json({ error: "Internal Server Error." });
-      }
-  };
+    }
+};
 
 /*********************************************************
  * Function to update a comment by Id
@@ -94,6 +96,7 @@ commentsController.getCommentByTaskId = async function (req, res) {
 commentsController.updateCommentById = async function (req, res) {
 //#swagger.tags = ['Comments Management']
 //#swagger.description = This is to update a comment by commentId in the database.
+    
     try {
         const commentId = new ObjectId(req.params.id);
         const { userId, taskId, comment } = req.body;
@@ -132,9 +135,9 @@ commentsController.updateCommentById = async function (req, res) {
  * Function to create a comment
  *********************************************************/
 commentsController.createComment = (req, res) => {
-    //#swagger.tags=['Comments Management']
-    //#swagger.description= Create a comment
-    // Validate request
+//#swagger.tags=['Comments Management']
+//#swagger.description= Create a comment
+    
     if (!req.body.comment) {
         res.status(400).send({ message: 'Content can not be empty!' });
         return;
@@ -160,8 +163,9 @@ commentsController.createComment = (req, res) => {
 
 // Delete a Comment
 commentsController.deleteCommentById = (req, res) => {
-    //#swagger.tags=['Comments Management']
-    //#swagger.description= Delete a comment by ID  
+//#swagger.tags=['Comments Management']
+//#swagger.description= Delete a comment by ID  
+
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must be a valid comment id to delete a comment');
     }

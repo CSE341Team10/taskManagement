@@ -7,7 +7,7 @@ const commentsController = {};
 /*********************************************************
  * Function to get a list of all comments from the database.
  ********************************************************/
-commentsController.getAll = async function (req, res) {
+commentsController.getAllComments = async function (req, res) {
 //#swagger.tags = ['Comments Management']
 //#swagger.description = This is to get a list of all comments from the database.
     
@@ -28,7 +28,7 @@ commentsController.getAll = async function (req, res) {
 /*********************************************************
  * Function to get a single comment by commentId from the database.
  ********************************************************/
-commentsController.getCommentById = async function (req, res) {
+commentsController.getCommentsById = async function (req, res) {
 //#swagger.tags = ['Comments Management']
 //#swagger.description = This is to get a comment by Id from the database.
     
@@ -48,9 +48,9 @@ commentsController.getCommentById = async function (req, res) {
 };
 
 /*********************************************************
- * Function to get a single comment by authorId from the database.
+ * Function to get comment(s) by authorId from the database.
  ********************************************************/
-commentsController.getCommentByUserId = async function (req, res) {
+commentsController.getCommentsByUserId = async function (req, res) {
 //#swagger.tags = ['Comments Management']
 //#swagger.description = This is to get a comment by userId from the database.
       
@@ -70,9 +70,9 @@ commentsController.getCommentByUserId = async function (req, res) {
 };
 
 /*********************************************************
- * Function to get a single comment by taskID from the database.
+ * Function to get comment(s) by taskID from the database.
  ********************************************************/
-commentsController.getCommentByTaskId = async function (req, res) {
+commentsController.getCommentsByTaskId = async function (req, res) {
 //#swagger.tags = ['Comments Management']
 //#swagger.description = This is to get a comment by taskId from the database.
     try {
@@ -151,7 +151,9 @@ commentsController.createComment = (req, res) => {
       newComment
         .save(newComment)
         .then((data) => {
-          res.send(data);
+            res.send({
+                message: `Comment has been created successfully!`,
+            });
         })
         .catch((err) => {
           res.status(500).send({

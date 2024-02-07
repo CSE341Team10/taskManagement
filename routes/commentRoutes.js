@@ -5,16 +5,16 @@ const router = express.Router();
 //const { userValidation, validateUser } = require("../middleware/userValidation");
 
 // Route to get all comments
-router.get("/", commentControllers.getAll);
+router.get("/", commentControllers.getAllComments);
 
 // Route to get a comment by commentID
-router.get("/:id", commentControllers.getCommentById);
+router.get("/:id", commentControllers.getCommentsById);
 
 // Route to get a comment by authorID
-router.get("/user/:id", commentControllers.getCommentByUserId);
+router.get("/user/:id", commentControllers.getCommentsByUserId);
 
 // Route to get a comment by taskID
-router.get("/task/:id", commentControllers.getCommentByTaskId);
+router.get("/task/:id", commentControllers.getCommentsByTaskId);
 
 // Route to create a comment
 router.post("/", commentControllers.createComment);

@@ -99,14 +99,14 @@ commentsController.updateCommentById = async function (req, res) {
     
     try {
         const commentId = new ObjectId(req.params.id);
-        const { userId, taskId, comment } = req.body;
+        // Update is available only for task and comment. The user remains the same.
+        const { taskId, comment } = req.body;
 
         updateFields = {
-            userId,
             taskId,
             comment,
         };
-
+        console.log(updateFields);
         const updatedComment = await Comment.findOneAndUpdate(
             { 
               _id: commentId,

@@ -1,7 +1,5 @@
 const { ObjectId } = require("mongodb");
 const Comment = require("../models/commentModels.js");
-const mongoose = require("mongoose");
-
 const commentsController = {};
 
 /*********************************************************
@@ -109,7 +107,7 @@ commentsController.updateCommentById = async function (req, res) {
         console.log(updateFields);
         const updatedComment = await Comment.findOneAndUpdate(
             { 
-              _id: commentId,
+                _id: commentId,
             },
             updateFields,
             {

@@ -8,8 +8,8 @@ const usersController = {};
  * Function to get a list of all user profiles from the database.
  ********************************************************/
 usersController.getAllProfiles = async function (req, res) {
-    //swagger.tags = ['Profile Management']
-    //swagger.description = ['This is to get a list of all user profiles from the database.']
+    //#swagger.tags = ['Profile Management']
+    //#swagger.description = ['This is to get a list of all user profiles from the database.']
     try {
         const profiles = await User.find({});
         return res.json(profiles);
@@ -23,6 +23,8 @@ usersController.getAllProfiles = async function (req, res) {
  * Function to get a single user profile by githubId from the database.
  ********************************************************/
 usersController.getUserProfileByGitHubId = async function (req, res) {
+    //#swagger.tags = ['Profile Management']
+    //#swagger.description = ['This is to get a single user from the database.']
     try {
         const githubUserId = req.params.id;
         const user = await User.findOne({ githubUserId: githubUserId});
@@ -41,9 +43,9 @@ usersController.getUserProfileByGitHubId = async function (req, res) {
 /*********************************************************
  * Function to update the user's profile
  *********************************************************/
-//swagger.tags = ['Profile Management']
-//swagger.description = ['This is to update a user in the database.']
 usersController.updateUserProfile = async function (req, res) {
+    //#swagger.tags = ['Profile Management']
+    //#swagger.description = ['This is to update a user in the database.']
     try {
         const githubUserId = req.params.id;
         const { username, displayName, firstName, lastName, userRole, email, password, profilePic } = req.body;

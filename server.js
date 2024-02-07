@@ -10,12 +10,6 @@ const mongoDB = require("./db/mongo.js");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger_output.json");
 const routes = require("./routes");
-const passport = require("passport");
-const session = require("express-session");
-const {
-    initializePassport,
-    expressSession,
-} = require("./middleware/authenticate");
 
 /******************************************
  * Middleware
@@ -27,25 +21,6 @@ app.use(cors({ origin: "*" }));
 // Use bodyParser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Use session middleware
-app.use(
-    session({
-        secret: "secret",
-        resave: false,
-        saveUninitialized: true,
-    })
-);
-
-// Initialize Passport and set up session management
-initializePassport();
-
-// Use Express session middleware
-app.use(expressSession);
-
-// Initialize Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Set up headers middleware
 app.use((req, res, next) => {

@@ -2,10 +2,10 @@ const commentControllers = require("../controllers/commentControllers");
 
 const express = require("express");
 const router = express.Router();
-//const { userValidation, validateUser } = require("../middleware/userValidation");
+const { userValidation, validateUser } = require("../middleware/userValidation");
 
 // Route to get all comments
-router.get("/", commentControllers.getAllComments);
+router.get("/", userValidation, commentControllers.getAllComments);
 
 // Route to get a comment by commentID
 router.get("/:id", commentControllers.getCommentsById);

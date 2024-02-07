@@ -19,4 +19,8 @@ const validateUser = (req, res, next) => {
   next();
 };
 
-module.exports = { userValidation, validateUser };
+const commentValidation = [
+  body("comment").optional().isString().trim().escape(),
+];
+
+module.exports = { userValidation, validateUser, commentValidation };

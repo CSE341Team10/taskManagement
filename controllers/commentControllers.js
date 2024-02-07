@@ -15,6 +15,8 @@ commentsController.getAllComments = async function (req, res) {
             userId: 1,
             taskId: 1,
             comment: 1,
+            createdAt: 1,
+            updatedAt: 1,
           });
         return res.json(comment);
     } catch (err) {
@@ -141,11 +143,11 @@ commentsController.createComment = (req, res) => {
         return;
       }
       const newComment = new Comment({
-        userId: req.body.userId,
+        userId: req.session.user._id, // the user Id is the user logged in
         taskId: req.body.taskId,
         comment: req.body.comment,
       });
-      // Save Author in the database
+      // Save Comment in the database
       newComment
         .save(newComment)
         .then((data) => {
@@ -156,7 +158,7 @@ commentsController.createComment = (req, res) => {
         .catch((err) => {
           res.status(500).send({
             message:
-              err.message || 'Some error occurred while creating the Author.',
+              err.message || 'Some error occurred while creating the Comment.',
           });
         });
   };

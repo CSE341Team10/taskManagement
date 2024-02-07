@@ -191,9 +191,6 @@
                 "comment": {
                   "example": "any"
                 },
-                "userId": {
-                  "example": "any"
-                },
                 "taskId": {
                   "example": "any"
                 }

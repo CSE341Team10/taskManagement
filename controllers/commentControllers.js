@@ -56,7 +56,7 @@ commentsController.getCommentByUserId = async function (req, res) {
       
     try {
         const commentID = req.params.id;
-        const comment = await Comment.findOne({ userId: commentID});
+        const comment = await Comment.find({ userId: commentID});
 
         if (comment) {
             res.json(comment);
@@ -77,7 +77,7 @@ commentsController.getCommentByTaskId = async function (req, res) {
 //#swagger.description = This is to get a comment by taskId from the database.
     try {
         const commentID = req.params.id;
-        const comment = await Comment.findOne({ taskId: commentID});
+        const comment = await Comment.find({ taskId: commentID});
 
         if (comment) {
             res.json(comment);

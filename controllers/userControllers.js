@@ -9,7 +9,7 @@ const usersController = {};
  ********************************************************/
 usersController.getAllProfiles = async function (req, res) {
     //#swagger.tags = ['Profile Management']
-    //#swagger.description = ['This is to get a list of all user profiles from the database.']
+    //#swagger.description = 'This is to get a list of all user profiles from the database.'
     try {
         const profiles = await User.find({});
         return res.json(profiles);
@@ -24,7 +24,7 @@ usersController.getAllProfiles = async function (req, res) {
  ********************************************************/
 usersController.getUserProfileByGitHubId = async function (req, res) {
     //#swagger.tags = ['Profile Management']
-    //#swagger.description = ['This is to get a single user from the database.']
+    //#swagger.description = 'This is to get a single user from the database.'
     try {
         const githubUserId = req.params.id;
         const user = await User.findOne({ githubUserId: githubUserId});
@@ -41,11 +41,43 @@ usersController.getUserProfileByGitHubId = async function (req, res) {
 };
 
 /*********************************************************
+ * Function to create a user profile
+ * ******************************************************/
+usersController.createUserProfile = async function (req, res) {
+    //#swagger.tags = ['Profile Management']
+    //#swagger.description = 'This is to create a user in the database.'
+    try {
+        const { username, displayName, firstName, lastName, userRole, email, password, profilePic, githubUserId } = req.body;
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new User({
+            _id: new mongoose.Types.ObjectId(),
+            username,
+            displayName,
+            firstName,
+            lastName,
+            userRole,
+            email,
+            password: hashedPassword,
+            profilePic,
+            githubUserId
+        });
+
+        const savedUser = await newUser.save();
+        res.json(savedUser);
+    } catch (error) {
+        console.error("Error creating user profile:", error);
+        res.status(500).json({ error: "Internal Server Error." });
+    }
+};
+
+/*********************************************************
  * Function to update the user's profile
  *********************************************************/
 usersController.updateUserProfile = async function (req, res) {
     //#swagger.tags = ['Profile Management']
-    //#swagger.description = ['This is to update a user in the database.']
+    //#swagger.description = 'This is to update a user in the database.'
     try {
         const githubUserId = req.params.id;
         const { username, displayName, firstName, lastName, userRole, email, password, profilePic } = req.body;
@@ -83,6 +115,29 @@ usersController.updateUserProfile = async function (req, res) {
         }
     } catch (error) {
         console.error("Error updating user profile:", error);
+        res.status(500).json({ error: "Internal Server Error." });
+    }
+};
+
+/*********************************************************
+ * Function to delete a user profile
+ * ******************************************************/
+usersController.deleteUserProfile = async function (req, res) {
+    //#swagger.tags = ['Profile Management']
+    //#swagger.description = 'This is to delete a user in the database.'
+    try {
+        const githubUserId = req.params.id;
+        const deletedProfile = await User.findOneAndDelete({ githubUserId: githubUserId });
+
+        if (deletedProfile) {
+            res.json({
+                message: `${deletedProfile.displayName} has been deleted successfully!`,
+            });
+        } else {
+            res.status(404).json({ error: "User profile not found." });
+        }
+    } catch (error) {
+        console.error("Error deleting user profile:", error);
         res.status(500).json({ error: "Internal Server Error." });
     }
 };

@@ -6,4 +6,9 @@ const router = express.Router();
  **********************************************/
 router.use("/users", require("./userRoutes"));
 
+/**********************************************
+ * Route to use for comments
+ **********************************************/
+router.use("/comments", require("./commentRoutes"));
+
 module.exports = router;

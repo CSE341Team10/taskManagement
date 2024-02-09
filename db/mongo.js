@@ -12,11 +12,7 @@ const mongo = {};
 const uri = process.env.MONGODB_URI;
 
 // Connection promise using the URI and required options
-const connectionPromise = mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-});
+const connectionPromise = mongoose.connect(uri);
 
 // Export the connection promise and the connectToMongoDB function
 mongo.connectionPromise = connectionPromise;

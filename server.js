@@ -7,8 +7,11 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoDB = require("./db/mongo.js");
+<<<<<<< HEAD
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger_output.json");
+=======
+>>>>>>> 924870b (removed swagger routes from server.js)
 const routes = require("./routes");
 
 /******************************************
@@ -40,10 +43,13 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 // Middleware to serve Swagger UI
 app.use("/api-docs", swaggerUi.serve);
 app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
+=======
+>>>>>>> 924870b (removed swagger routes from server.js)
 /******************************************
  * Routes
  *****************************************/

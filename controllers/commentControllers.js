@@ -144,6 +144,7 @@ commentsController.createComment = (req, res) => {
     }
     const newComment = new Comment({
         // userId: req.session.user._id, // the user Id is the user logged in
+        userId: req.body.userId,
         taskId: req.body.taskId,
         comment: req.body.comment,
     });

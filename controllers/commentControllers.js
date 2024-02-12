@@ -35,6 +35,7 @@ commentsController.getCommentsById = async function (req, res) {
     //#swagger.description = 'This is to get a comment by Id from the database.'
 
     try {
+        console.log('Received user ID:', req.params.id);
         const commentId = req.params.id;
         const comment = await Comment.findOne({ _id: commentId });
 
@@ -50,15 +51,16 @@ commentsController.getCommentsById = async function (req, res) {
 };
 
 /*********************************************************
- * Function to get comment(s) by authorId from the database.
+ * Function to get comment(s) by userId from the database.
  ********************************************************/
 commentsController.getCommentsByUserId = async function (req, res) {
     //#swagger.tags = ['Comments Management']
     //#swagger.description = 'This is to get a comment by userId from the database.'
 
     try {
-        const commentID = req.params.id;
-        const comment = await Comment.find({ userId: commentID });
+        const userId = req.params.id;
+        const objectIdUserId = new ObjectId(userId);
+        const comment = await Comment.find({ userId: objectIdUserId });
 
         if (comment) {
             res.json(comment);
@@ -69,6 +71,29 @@ commentsController.getCommentsByUserId = async function (req, res) {
         console.error("Error fetching comment:", error);
         res.status(500).json({ error: "Internal Server Error." });
     }
+};
+
+/*********************************************************
+ * Function to get all comment(s) of a user from the database.
+ ********************************************************/
+commentsController.getAllCommentsByUser = async function (req, res) {
+    //#swagger.tags = ['Comments Management']
+    //#swagger.description = 'This is to get all comment by the user logged from the database.'
+    
+    try {
+        const userId = req.session.user._id;
+        const comment = await Comment.find({ userId: userId });
+
+        if (comment) {
+            res.json(comment);
+        } else {
+            res.status(404).json({ error: "Comment not found." });
+        }
+    } catch (error) {
+        console.error("Error fetching comment:", error);
+        res.status(500).json({ error: "Internal Server Error." });
+    }
+    
 };
 
 /*********************************************************
@@ -100,7 +125,8 @@ commentsController.updateCommentById = async function (req, res) {
     //#swagger.description = 'This is to update a comment by commentId in the database.'
 
     try {
-        const commentId = new ObjectId(req.params.id);
+        //const commentId = new ObjectId(req.params.id);
+        const commentId = req.params.id;
         // Update is available only for task and comment. The user remains the same.
         const { taskId, comment } = req.body;
 

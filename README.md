@@ -19,6 +19,12 @@ The profile fields are filled in with values that GitHub provides, depending on 
 - email : This field will store as "not provided" until the user updates their profile. When updating the email in the profile, it must be in a valid email format.
 - profilePic : This is the path to the picture or avatar that the user has set in their GitHub. This way it could be used in a frontend application later on.
 
+### Fields for the "comments" collection 
+- _id : This is the object id created by Mongo DB.
+- userId : This is the objectId for the user that was provided when they first logged in with GitHub's OAuth.
+- taskId : This is the objectId for the task when it was created.
+- comment : This field contains the user's comment related to a task.
+
 ### Ideas for how it could integrate
 I thought that the githubUserId would be a good value to use across the database to link a user to the other collections: tasks, categories, and comments. 
 It could display their username or displayName with the comments and tasks to identify the user and link them to certain areas. Most of this is of course, 

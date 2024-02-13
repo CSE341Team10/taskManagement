@@ -5,7 +5,7 @@
     "description": "Node.js assignment for CSE341",
     "version": "1.0.0"
   },
-  "host": "https://taskmanagement-zb1a.onrender.com",
+  "host": "taskmanagement-zb1a.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

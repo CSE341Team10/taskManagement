@@ -170,14 +170,13 @@ commentsController.createComment = (req, res) => {
         return;
     }
     const newComment = new Comment({
-        // userId: req.session.user._id, // the user Id is the user logged in
-        userId: req.body.userId,
+        userId: req.session.user._id, // the user Id is the user logged in
         taskId: req.body.taskId,
         comment: req.body.comment,
     });
     // Save Comment in the database
     newComment
-        .save(newComment)
+        .save()
         .then((data) => {
             res.send({
                 message: `Comment has been created successfully!`,

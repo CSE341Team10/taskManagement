@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const { isAuthenticated } = require("../middleware/authenticate");
+const comment = require('./commentRoutes');
 
 router.use("/", require("./swagger"));
 
@@ -18,7 +19,7 @@ router.use("/tasks", require("./taskRoutes"));
 /**********************************************
  * Route to use for comments
  **********************************************/
-router.use("/comments", isAuthenticated, require("./commentRoutes"));
+router.use("/comments", isAuthenticated, comment);
 
 /**********************************************
  * The next 4 router.get routes are for OAuth2.0 with GitHub

@@ -81,3 +81,5 @@ mongoDB
     .catch((err) => {
         console.error("Error starting the application:", err);
     });
+
+module.exports = app;

@@ -23,7 +23,7 @@ The profile fields are filled in with values that GitHub provides, depending on 
 - _id : This is the object id created by Mongo DB.
 - userId : This is the objectId for the user that was provided when they first logged in with GitHub's OAuth.
 - taskId : This is the objectId for the task when it was created.
-- comment : This field contains the user's comment related to a task.
+- comment : This field contains the user's comment related to a task i.
 
 ### Ideas for how it could integrate
 I thought that the githubUserId would be a good value to use across the database to link a user to the other collections: tasks, categories, and comments. 

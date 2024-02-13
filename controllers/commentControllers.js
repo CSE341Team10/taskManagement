@@ -102,9 +102,10 @@ commentsController.getAllCommentsByUser = async function (req, res) {
 commentsController.getCommentsByTaskId = async function (req, res) {
     //#swagger.tags = ['Comments Management']
     //#swagger.description = 'This is to get a comment by taskId from the database.'
-    try {
-        const commentID = req.params.id;
-        const comment = await Comment.find({ taskId: commentID });
+    try {        
+        const taskId = req.params.id;
+        const objectIdTaskId = new ObjectId(taskId);
+        const comment = await Comment.find({ taskId: objectIdTaskId });
 
         if (comment) {
             res.json(comment);

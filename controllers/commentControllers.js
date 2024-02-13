@@ -192,7 +192,9 @@ commentsController.createComment = (req, res) => {
         });
 };
 
-// Delete a Comment
+/*********************************************************
+ * Function to delete a comment
+ *********************************************************/
 commentsController.deleteCommentById = (req, res) => {
     //#swagger.tags=['Comments Management']
     //#swagger.description= 'Delete a comment by ID'

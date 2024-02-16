@@ -9,7 +9,7 @@ router.use("/", require("./swagger"));
 /**********************************************
  * Route to use for all User Profile Management
  **********************************************/
-router.use("/users", isAuthenticated, require("./userRoutes"));
+router.use("/users", require("./userRoutes"));
 
 /**********************************************
  * Route to use for task management

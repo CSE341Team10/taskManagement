@@ -12,9 +12,9 @@ usersController.getAllProfiles = async function (req, res) {
     //#swagger.description = 'This is to get a list of all user profiles from the database.'
     try {
         const profiles = await User.find({});
-        return res.json(profiles);
-    } catch (err) {
-        console.error("Error fetching medications:", err);
+        return res.status(200).json(profiles);
+    } catch (error) {
+        console.error("Error fetching medications:", error);
         res.status(500).json({ error: "Internal Server Error." });
     }
 };
@@ -30,7 +30,7 @@ usersController.getUserProfileByGitHubId = async function (req, res) {
         const user = await User.findOne({ githubUserId: githubUserId});
 
         if (user) {
-            res.json(user);
+            res.status(200).json(user);
         } else {
             res.status(404).json({ error: "User not found." });
         }

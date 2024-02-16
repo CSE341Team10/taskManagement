@@ -60,7 +60,7 @@ const config = {
   // forceCoverageMatch: [],
 
   // A path to a module which exports an async function that is triggered once before all test suites
-  // globalSetup: undefined,
+  globalSetup: undefined,
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
@@ -136,7 +136,7 @@ const config = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -195,4 +195,5 @@ const config = {
   // watchman: true,
 };
 
-module.exports = config;
+module.exports = config, { setupFilesAfterEnv: ['./jest.setup.js'] }, { globalSetup: ['./jestGlobalSetup.ts']}
+;

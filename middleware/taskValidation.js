@@ -3,10 +3,10 @@ const { body, validationResult } = require("express-validator");
 const taskValidationRules = () => {
     return [
         body("title").notEmpty().withMessage("title field is required").trim(),
-        body("description").isString().withMessage("description must be a string.").trim(),
-        body("dueDate").isString().withMessage("dueDate must follow YYYY-MM-DD format").trim(),
+        body("description").optional().isString().trim(),
+        body("dueDate").customSanitizer(value => value || "2024-12-31").trim(),
         body("priorityLevel").customSanitizer(value => value || "No-priority").trim(),
-        body("status").default("In progress").trim(),
+        body("status").customSanitizer(value => value || "Pending").trim(),
         body("userId").isLength({ max: 24 }).trim(),
     ]
 };

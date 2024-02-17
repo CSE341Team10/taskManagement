@@ -69,9 +69,6 @@ const getTasksByUserId = async (req, res) => {
 const createTask = async (req, res) => {
     //#swagger.tags=['Tasks']
     //#swagger.description='Creates a new task.'
-    if (!req.body.title || req.body.title == "") {
-        return res.status(400).send({ message: 'Title cannot be empty!' });
-    }
 
     try {
         const task = new Task({

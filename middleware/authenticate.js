@@ -15,7 +15,7 @@ const initializePassport = () => {
                 scope: ["user", "user:email"],
             },
             async (accessToken, refreshToken, profile, done) => {
-                console.log(accessToken);
+                //console.log(accessToken);
                 try {
                     let email = profile.email || "email not provided";
                     const existingUser = await User.findOne({

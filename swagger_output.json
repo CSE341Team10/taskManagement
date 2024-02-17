@@ -5,17 +5,13 @@
     "description": "Node.js assignment for CSE341",
     "version": "1.0.0"
   },
-  "host": "cse341taskmanagement.onrender.com",
+  "host": "localhost:7100",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/users/": {
       "get": {
-        "tags": [
-          "Profile Management"
-        ],
+        "tags": ["Profile Management"],
         "description": "This is to get a list of all user profiles from the database.",
         "responses": {
           "200": {
@@ -30,9 +26,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Profile Management"
-        ],
+        "tags": ["Profile Management"],
         "description": "This is to create a user in the database.",
         "parameters": [
           {
@@ -90,9 +84,7 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": [
-          "Profile Management"
-        ],
+        "tags": ["Profile Management"],
         "description": "This is to get a single user from the database.",
         "parameters": [
           {
@@ -118,9 +110,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Profile Management"
-        ],
+        "tags": ["Profile Management"],
         "description": "This is to update a user in the database.",
         "parameters": [
           {
@@ -182,9 +172,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Profile Management"
-        ],
+        "tags": ["Profile Management"],
         "description": "This is to delete a user in the database.",
         "parameters": [
           {
@@ -212,9 +200,7 @@
     },
     "/tasks/": {
       "get": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "description": "Gets a list of all tasks.",
         "responses": {
           "200": {
@@ -229,9 +215,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "description": "Creates a new task.",
         "parameters": [
           {
@@ -280,9 +264,7 @@
     },
     "/tasks/{id}": {
       "get": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "description": "Gets a specific tasks by its ID.",
         "parameters": [
           {
@@ -308,9 +290,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "description": "Updates a specific taks by its ID.",
         "parameters": [
           {
@@ -363,9 +343,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "description": "Deletes a specific taks by its ID.",
         "parameters": [
           {
@@ -393,9 +371,7 @@
     },
     "/tasks/user/{id}": {
       "get": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "description": "Gets a specific tasks by the user",
         "parameters": [
           {
@@ -414,9 +390,7 @@
     },
     "/comments/": {
       "get": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "This is to get a list of all comments from the database.",
         "responses": {
           "200": {
@@ -431,9 +405,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "Create a comment",
         "parameters": [
           {
@@ -470,9 +442,7 @@
     },
     "/comments/user/": {
       "get": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "This is to get all comment by the user logged from the database.",
         "responses": {
           "200": {
@@ -492,9 +462,7 @@
     },
     "/comments/{id}": {
       "get": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "This is to get a comment by Id from the database.",
         "parameters": [
           {
@@ -520,9 +488,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "This is to update a comment by commentId in the database.",
         "parameters": [
           {
@@ -563,9 +529,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "Delete a comment by ID",
         "parameters": [
           {
@@ -596,9 +560,7 @@
     },
     "/comments/user/{id}": {
       "get": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "This is to get a comment by userId from the database.",
         "parameters": [
           {
@@ -626,9 +588,7 @@
     },
     "/comments/task/{id}": {
       "get": {
-        "tags": [
-          "Comments Management"
-        ],
+        "tags": ["Comments Management"],
         "description": "This is to get a comment by taskId from the database.",
         "parameters": [
           {

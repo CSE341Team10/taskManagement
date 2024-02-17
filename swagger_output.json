@@ -7,11 +7,68 @@
   },
   "host": "localhost:7100",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": [
+    "http"
+  ],
   "paths": {
+    "/login": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/github/callback": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/users/": {
       "get": {
-        "tags": ["Profile Management"],
+        "tags": [
+          "Profile Management"
+        ],
         "description": "This is to get a list of all user profiles from the database.",
         "responses": {
           "200": {
@@ -26,7 +83,9 @@
         }
       },
       "post": {
-        "tags": ["Profile Management"],
+        "tags": [
+          "Profile Management"
+        ],
         "description": "This is to create a user in the database.",
         "parameters": [
           {
@@ -84,7 +143,9 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["Profile Management"],
+        "tags": [
+          "Profile Management"
+        ],
         "description": "This is to get a single user from the database.",
         "parameters": [
           {
@@ -110,7 +171,9 @@
         }
       },
       "put": {
-        "tags": ["Profile Management"],
+        "tags": [
+          "Profile Management"
+        ],
         "description": "This is to update a user in the database.",
         "parameters": [
           {
@@ -172,7 +235,9 @@
         }
       },
       "delete": {
-        "tags": ["Profile Management"],
+        "tags": [
+          "Profile Management"
+        ],
         "description": "This is to delete a user in the database.",
         "parameters": [
           {
@@ -200,14 +265,13 @@
     },
     "/tasks/": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "description": "Gets a list of all tasks.",
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -215,7 +279,9 @@
         }
       },
       "post": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "description": "Creates a new task.",
         "parameters": [
           {
@@ -253,9 +319,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -264,7 +327,9 @@
     },
     "/tasks/{id}": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "description": "Gets a specific tasks by its ID.",
         "parameters": [
           {
@@ -278,9 +343,6 @@
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Not Found"
           },
@@ -290,7 +352,9 @@
         }
       },
       "put": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "description": "Updates a specific taks by its ID.",
         "parameters": [
           {
@@ -331,9 +395,6 @@
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Not Found"
           },
@@ -343,7 +404,9 @@
         }
       },
       "delete": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "description": "Deletes a specific taks by its ID.",
         "parameters": [
           {
@@ -357,9 +420,6 @@
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Not Found"
           },
@@ -371,7 +431,9 @@
     },
     "/tasks/user/{id}": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "description": "Gets a specific tasks by the user",
         "parameters": [
           {
@@ -382,15 +444,17 @@
           }
         ],
         "responses": {
-          "401": {
-            "description": "Unauthorized"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/comments/": {
       "get": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "This is to get a list of all comments from the database.",
         "responses": {
           "200": {
@@ -405,7 +469,9 @@
         }
       },
       "post": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "Create a comment",
         "parameters": [
           {
@@ -442,7 +508,9 @@
     },
     "/comments/user/": {
       "get": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "This is to get all comment by the user logged from the database.",
         "responses": {
           "200": {
@@ -462,7 +530,9 @@
     },
     "/comments/{id}": {
       "get": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "This is to get a comment by Id from the database.",
         "parameters": [
           {
@@ -488,7 +558,9 @@
         }
       },
       "put": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "This is to update a comment by commentId in the database.",
         "parameters": [
           {
@@ -529,7 +601,9 @@
         }
       },
       "delete": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "Delete a comment by ID",
         "parameters": [
           {
@@ -560,7 +634,9 @@
     },
     "/comments/user/{id}": {
       "get": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "This is to get a comment by userId from the database.",
         "parameters": [
           {
@@ -588,7 +664,9 @@
     },
     "/comments/task/{id}": {
       "get": {
-        "tags": ["Comments Management"],
+        "tags": [
+          "Comments Management"
+        ],
         "description": "This is to get a comment by taskId from the database.",
         "parameters": [
           {
@@ -610,6 +688,181 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/categories/": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Gets a list of all categories.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Creates a new category.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryName": {
+                  "example": "any"
+                },
+                "categoryDescription": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Gets a specific categories by its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Updates a specific category by its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryName": {
+                  "example": "any"
+                },
+                "categoryDescription": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Deletes a specific category by its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/categories/task/{id}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Gets a specific categories by the category",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }

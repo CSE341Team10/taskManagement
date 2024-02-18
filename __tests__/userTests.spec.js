@@ -33,7 +33,7 @@ describe('Test Handlers', () => {
   test('responds to /users/:id', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
-    const res = await request.get('/users/113550710').set('Authorization', `Bearer ${accessToken}`);
+    const res = await request.get('/users/121740143').set('Authorization', `Bearer ${accessToken}`);
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
   });
@@ -78,6 +78,14 @@ describe('Test Handlers', () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
     const res = (await request.delete('/users/1111111111').set('Authorization', `Bearer ${accessToken}`));
+    expect(res.statusCode).toBe(200);
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /comments', async () => {
+    // Use the mocked getToken function instead of real OAuth authentication
+    const accessToken = await mockOAuth.getToken();
+    const res = await request.get('/comments').set(`Authorization`, `Bearer ${accessToken}`);
     expect(res.statusCode).toBe(200);
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });

@@ -67,4 +67,4 @@ open to further interpretation.
 
 ## Tests
 
--- `npm test:` + name of the test section, ex.: "comment" or "user" → (npm test:comment).
+-- `npm run test:` + name of the test section, ex.: "comment", "user", "task", "category" → (npm test:comment).

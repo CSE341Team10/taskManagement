@@ -35,7 +35,7 @@ commentsController.getCommentsById = async function (req, res) {
     //#swagger.description = 'This is to get a comment by Id from the database.'
 
     try {
-        console.log('Received user ID:', req.params.id);
+        //console.log('Received user ID:', req.params.id);
         const commentId = req.params.id;
         const comment = await Comment.findOne({ _id: commentId });
 
@@ -180,6 +180,7 @@ commentsController.createComment = (req, res) => {
         .then((data) => {
             res.send({
                 message: `Comment has been created successfully!`,
+                _id: data._id,  // Include the _id in the response
             });
         })
         .catch((err) => {

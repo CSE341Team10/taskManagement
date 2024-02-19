@@ -1,27 +1,6 @@
-// Mock OAuth authentication module
-const jwt = require('jsonwebtoken');
+const { app, request, expect, mockOAuth } = require('../testSetup');
 
-const mockOAuth = {
-  getToken: jest.fn().mockImplementation(() => {
-    // Generate a valid access token
-    const accessToken = jwt.sign({ /* payload */ }, 'your_secret_key', { expiresIn: '1h' });
-    return Promise.resolve(accessToken);
-  })
-};
-
-// Inject the mock into your server setup
-beforeAll(() => {
-  jest.mock('../middleware/authenticate', () => {
-    return mockOAuth;
-  });
-});
-
-const app = require('../server.js');
-const supertest = require('supertest');
-const { expect } = require('@jest/globals');
-const request = supertest(app);
-
-describe('Test Handlers', () => {
+describe('User Tests', () => {
   test('responds to /users', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
@@ -33,7 +12,7 @@ describe('Test Handlers', () => {
   test('responds to /users/:id', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
-    const res = await request.get('/users/113550710').set('Authorization', `Bearer ${accessToken}`);
+    const res = await request.get('/users/121740143').set('Authorization', `Bearer ${accessToken}`);
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
   });
@@ -81,5 +60,4 @@ describe('Test Handlers', () => {
     expect(res.statusCode).toBe(200);
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
-
 });

@@ -180,6 +180,7 @@ commentsController.createComment = (req, res) => {
         .then((data) => {
             res.send({
                 message: `Comment has been created successfully!`,
+                _id: data._id,  // Include the _id in the response
             });
         })
         .catch((err) => {

@@ -5,10 +5,10 @@
     "description": "Node.js assignment for CSE341",
     "version": "1.0.0"
   },
-  "host": "localhost:7100",
+  "host": "cse341taskmanagement.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/users/": {

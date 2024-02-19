@@ -64,3 +64,7 @@ open to further interpretation.
 
 -   `npm install`
 -   `npm start` starts up a local server
+
+## Tests
+
+-- `npm test:` + name of the test section, ex.: "comment" or "user" → (npm test:comment).

@@ -69,6 +69,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", routes);
 
 /******************************************
+ * Authenticatiion Endpoint
+ *****************************************/
+app.get("/github/callback", passport.authenticate("github", 
+    {
+        failureRedirect: "/api-docs",
+        session: false,
+    }),
+    (req, res) => {
+        req.session.user = req.user;
+        res.redirect("/");
+    }
+);
+
+/******************************************
  * Server Setup
  ******************************************/
 const PORT = process.env.PORT || 7100;

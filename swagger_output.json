@@ -304,9 +304,6 @@
                 },
                 "status": {
                   "example": "any"
-                },
-                "userId": {
-                  "example": "any"
                 }
               }
             }
@@ -319,6 +316,15 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
+=======
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+>>>>>>> 7c5fea3cd9a7b25e393241c96374ed1fa1e074eb
           "500": {
             "description": "Internal Server Error"
           }
@@ -343,6 +349,15 @@
           "200": {
             "description": "OK"
           },
+<<<<<<< HEAD
+=======
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+>>>>>>> 7c5fea3cd9a7b25e393241c96374ed1fa1e074eb
           "404": {
             "description": "Not Found"
           },
@@ -383,9 +398,6 @@
                 },
                 "status": {
                   "example": "any"
-                },
-                "userId": {
-                  "example": "any"
                 }
               }
             }
@@ -395,8 +407,20 @@
           "200": {
             "description": "OK"
           },
+<<<<<<< HEAD
+=======
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+>>>>>>> 7c5fea3cd9a7b25e393241c96374ed1fa1e074eb
           "404": {
             "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"
@@ -420,6 +444,15 @@
           "200": {
             "description": "OK"
           },
+<<<<<<< HEAD
+=======
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+>>>>>>> 7c5fea3cd9a7b25e393241c96374ed1fa1e074eb
           "404": {
             "description": "Not Found"
           },

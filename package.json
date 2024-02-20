@@ -6,7 +6,9 @@
     "scripts": {
         "start": "nodemon server.js",
         "gen-swagger": "node swagger.js",
-        "test": "jest --watch --coverage"
+        "test:comment": "jest __tests__/commentTests.spec.js --watch --coverage --runInBand --detectOpenHandles",
+        "test:user": "jest __tests__/userTests.spec.js --watch --coverage --runInBand --detectOpenHandles",
+        "test:task": "jest __tests__/taskTests.spec.js --watch --coverage --runInBand --detectOpenHandles"
     },
     "author": "Team 10",
     "license": "ISC",

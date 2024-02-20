@@ -43,6 +43,10 @@ open to further interpretation.
 
 ## Categories portion
 
+-   \_id : This is the object id created by Mongo DB.
+-   categoryName : This required field will store the title of the task in a string.
+-   categoryDescription : This field will story a text description of the category to provide more clarity.
+
 ## Comments portion
 
 ### Fields for the "comments" collection

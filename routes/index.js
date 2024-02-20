@@ -57,19 +57,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error." });
   }
 });
-<<<<<<< HEAD
-router.get(
-  "/github/callback",
-  passport.authenticate("github", {
-    failureRedirect: "/api-docs",
-    session: false,
-  }),
-  (req, res) => {
-    req.session.user = req.user;
-    res.redirect("/");
-  }
-);
-=======
 // router.get(
 //     "/github/callback",
 //     passport.authenticate("github", {
@@ -81,6 +68,5 @@ router.get(
 //         res.redirect("/");
 //     }
 // );
->>>>>>> 7c5fea3cd9a7b25e393241c96374ed1fa1e074eb
 
 module.exports = router;

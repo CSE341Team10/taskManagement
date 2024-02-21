@@ -864,27 +864,6 @@
           }
         }
       }
-    },
-    "/categories/task/{id}": {
-      "get": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "Gets a specific categories by the category",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
     }
   }
 }

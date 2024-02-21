@@ -26,14 +26,6 @@ describe('Test Handlers', function () {
         expect(res.statusCode).toBe(200);
     });
 
-    test('responds to GET /tasks/category/:id', async () => {
-        // Use the mocked getToken function instead of real OAuth authentication
-        const accessToken = await mockOAuth.getToken();
-        const res = await request.get('/tasks/category/65d54132ffa5efc6c75d4e76').set('Authorization', `Bearer ${accessToken}`);
-        expect(res.header['content-type']).toBe('application/json; charset=utf-8');
-        expect(res.statusCode).toBe(200);
-    });
-
     test('responds to POST /tasks', async () => {
         // Use the mocked getToken function instead of real OAuth authentication
         const accessToken = await mockOAuth.getToken();
@@ -43,8 +35,17 @@ describe('Test Handlers', function () {
             dueDate: "2024-02-21",
             priorityLevel: "High",
             status: "In Progress",
+            categoryId: "65d027fa2877681f8504eded",
 
         }));
+        expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+        expect(res.statusCode).toBe(200);
+    });
+
+    test('responds to GET /tasks/category/:id', async () => {
+        // Use the mocked getToken function instead of real OAuth authentication
+        const accessToken = await mockOAuth.getToken();
+        const res = await request.get('/tasks/category/65d027fa2877681f8504eded').set('Authorization', `Bearer ${accessToken}`);
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200);
     });
@@ -53,11 +54,12 @@ describe('Test Handlers', function () {
         // Use the mocked getToken function instead of real OAuth authentication
         const accessToken = await mockOAuth.getToken();
         const res = (await request.put('/tasks/65c69ddebe80c3b8bc76cc7f').set('Authorization', `Bearer ${accessToken}`).send({
-            title: "Test task",
+            title: "Test task 2",
             description: "Test desc.",
             dueDate: "2024-02-21",
-            priorityLevel: "Medium",
+            priorityLevel: "High",
             status: "In Progress",
+            categoryId: "65d027fa2877681f8504eded",
         }));
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200);
@@ -66,7 +68,7 @@ describe('Test Handlers', function () {
     test('responds to DELETE /tasks/:id"', async () => {
          // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
-    const res = (await request.delete('/tasks/65d3a20f8b0e8467d1de8172').set('Authorization', `Bearer ${accessToken}`));
+    const res = (await request.delete('/tasks/65d3a3c4c3605e10388f0e31').set('Authorization', `Bearer ${accessToken}`));
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
 });

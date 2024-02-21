@@ -5,7 +5,6 @@ const {
   categoryValidation,
   validateCategory,
   categoryDeleteValidation,
-  categoryGetByTaskIdValidation,
   categoryGetValidation,
   categoryUpdateValidation,
 } = require("../middleware/categoryValidation");

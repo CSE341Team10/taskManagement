@@ -19,13 +19,10 @@ const categoryUpdateValidation = [param("id").isMongoId()];
 
 const categoryGetValidation = [param("id").isMongoId()];
 
-const categoryGetByTaskIdValidation = [param("id").isMongoId()];
-
 module.exports = {
   categoryValidation,
   validateCategory,
   categoryDeleteValidation,
   categoryUpdateValidation,
   categoryGetValidation,
-  categoryGetByTaskIdValidation,
 };

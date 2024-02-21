@@ -1,6 +1,7 @@
 const mongodb = require("../db/mongo");
 const ObjectId = require("mongodb").ObjectId;
 const Category = require("../models/categoryModel.js");
+const Task = require("../models/taskModel.js");
 
 const getAllCategories = async (req, res) => {
   //#swagger.tags=['Categories']
@@ -41,21 +42,21 @@ const getCategoriesByTaskId = async (req, res) => {
   //#swagger.description='Gets a specific categories by the category's ID.'
 
   try {
-    const categoryId = req.params.id;
-    const categories = await Category.find({ categoryId: categoryId });
+    const taskId = req.params.id;
+    const tasks = await Task.find({ _id: taskId });
 
-    if (categories.length > 0) {
-      res.status(200).json(categories);
+    if (tasks.length > 0) {
+      res.status(200).json(tasks);
     } else {
-      res.status(404).json({ error: "Categories not found." });
+      res.status(404).json({ error: "Tasks not found." });
     }
   } catch (err) {
     console.error(
-      "There was an error while fetching the categories by category ID.",
+      "There was an error while fetching the tasks by category ID.",
       err
     );
     res.status(500).json({
-      error: "There was an error while fetching the categories by category ID.",
+      error: "There was an error while fetching the tasks by category ID.",
     });
   }
 };

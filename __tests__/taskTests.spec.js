@@ -58,7 +58,7 @@ describe('Test Handlers', function () {
     test('responds to DELETE /tasks/:id"', async () => {
          // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
-    const res = (await request.delete('/tasks/65d3af8e41603e2939316616').set('Authorization', `Bearer ${accessToken}`));
+    const res = (await request.delete('/tasks/65d3a20f8b0e8467d1de8172').set('Authorization', `Bearer ${accessToken}`));
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
 });

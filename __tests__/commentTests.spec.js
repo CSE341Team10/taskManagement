@@ -10,10 +10,10 @@ describe('Comment Tests', () => {
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
   
-  test('responds to GET /comments/65c7cf6da83c31eb208ab662', async () => {
+  test('responds to GET /comments/:id', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
-    const res = await request.get('/comments/65c7cf6da83c31eb208ab662').set(`Authorization`, `Bearer ${accessToken}`);
+    const res = await request.get('/comments/65cbc0b6dba7cd4a50112930').set(`Authorization`, `Bearer ${accessToken}`);
     expect(res.statusCode).toBe(200);
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
@@ -32,7 +32,7 @@ describe('Comment Tests', () => {
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
 
-  test('responds to GET /comments/user/65cb03e5175cacd434436f2e', async () => {
+  test('responds to GET /comments/user/:id', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
     const res = await request.get('/comments/user/65cb03e5175cacd434436f2e').set(`Authorization`, `Bearer ${accessToken}`);
@@ -40,7 +40,7 @@ describe('Comment Tests', () => {
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
 
-  test('responds to GET /comments/task/65c28199da9035e2c8944312', async () => {
+  test('responds to GET /comments/task/:id', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
     const res = await request.get('/comments/task/65c28199da9035e2c8944312').set(`Authorization`, `Bearer ${accessToken}`);
@@ -69,13 +69,12 @@ describe('Comment Tests', () => {
     
     // Store the _id of the created comment
     createdCommentId = res.body._id;
-    console.log(createdCommentId);
 
     expect(res.statusCode).toBe(200);
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
 
-  test('responds to PUT /comments/65d2b185a6bb6176fcdf3d49', async () => {
+  test('responds to PUT /comments/:id', async () => {
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();
 
@@ -87,7 +86,9 @@ describe('Comment Tests', () => {
       taskId: "65c28199da9035e2c8944312"
     };
 
-    const res = await request.put('/comments/65d2b185a6bb6176fcdf3d49')
+    const updateEndpoint = `/comments/${createdCommentId}`;
+
+    const res = await request.put(updateEndpoint)
         .set('Authorization', `Bearer ${accessToken}`)
         .set('Cookie', [`yourSessionCookie=${JSON.stringify(mockUserSession)}`])
         .send(requestBody);
@@ -96,7 +97,7 @@ describe('Comment Tests', () => {
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
 
-  test(`responds to DELETE /comments/<_id>`, async () => {
+  test(`responds to DELETE /comments/:id`, async () => {
 
     // Use the mocked getToken function instead of real OAuth authentication
     const accessToken = await mockOAuth.getToken();

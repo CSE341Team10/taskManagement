@@ -16,13 +16,6 @@ router.get("/", validateCategory, categoryController.getAllCategories);
 // GET a single category:
 router.get("/:id", categoryGetValidation, categoryController.getCategoryById);
 
-// GET all categorys by task:
-router.get(
-  "/task/:id",
-  categoryGetByTaskIdValidation,
-  categoryController.getCategoriesByTaskId
-);
-
 // POST for adding a new category:
 router.post(
   "/",

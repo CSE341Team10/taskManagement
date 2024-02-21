@@ -37,30 +37,6 @@ const getCategoryById = async (req, res) => {
   }
 };
 
-const getCategoriesByTaskId = async (req, res) => {
-  //#swagger.tags=['Categories']
-  //#swagger.description='Gets a specific categories by the category's ID.'
-
-  try {
-    const taskId = req.params.id;
-    const tasks = await Task.find({ _id: taskId });
-
-    if (tasks.length > 0) {
-      res.status(200).json(tasks);
-    } else {
-      res.status(404).json({ error: "Tasks not found." });
-    }
-  } catch (err) {
-    console.error(
-      "There was an error while fetching the tasks by category ID.",
-      err
-    );
-    res.status(500).json({
-      error: "There was an error while fetching the tasks by category ID.",
-    });
-  }
-};
-
 const createCategory = async (req, res) => {
   //#swagger.tags=['Categories']
   //#swagger.description='Creates a new category.'

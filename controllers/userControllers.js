@@ -14,7 +14,7 @@ usersController.getAllProfiles = async function (req, res) {
         const profiles = await User.find({});
         return res.status(200).json(profiles);
     } catch (error) {
-        console.error("Error fetching medications:", error);
+        console.error("Error fetching users:", error);
         res.status(500).json({ error: "Internal Server Error." });
     }
 };

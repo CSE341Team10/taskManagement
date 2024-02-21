@@ -9,6 +9,8 @@ router.get("/", isAuthenticated, taskController.getAllTasks);
 router.get("/:id", isAuthenticated, taskController.getTaskById);
 // GET request for all tasks by a specific user:
 router.get("/user/:id", isAuthenticated, taskController.getTasksByUserId);
+// GET request for all tasks by a specific category:
+router.get("/category/:id", isAuthenticated, taskController.getTasksByCategoryId);
 // POST request for adding a new task:
 router.post("/", isAuthenticated, taskValidationRules(), validateTask, taskController.createTask);
 // PUT request for udpating an existing task:

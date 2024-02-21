@@ -10,6 +10,7 @@ const taskSchema = new mongoose.Schema(
         priorityLevel: { type: String, required: true },
         status: { type: String },
         userId: { type: ObjectId },
+        categoryId: { type: ObjectId },
     }, { versionKey: false }
 );
 

@@ -26,6 +26,14 @@ describe('Test Handlers', function () {
         expect(res.statusCode).toBe(200);
     });
 
+    test('responds to GET /tasks/category/:id', async () => {
+        // Use the mocked getToken function instead of real OAuth authentication
+        const accessToken = await mockOAuth.getToken();
+        const res = await request.get('/tasks/category/65d54132ffa5efc6c75d4e76').set('Authorization', `Bearer ${accessToken}`);
+        expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+        expect(res.statusCode).toBe(200);
+    });
+
     test('responds to POST /tasks', async () => {
         // Use the mocked getToken function instead of real OAuth authentication
         const accessToken = await mockOAuth.getToken();

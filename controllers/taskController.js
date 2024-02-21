@@ -1,6 +1,7 @@
 const mongodb = require("../db/mongo");
 const ObjectId = require("mongodb").ObjectId;
 const Task = require("../models/taskModel.js");
+const Category = require("../models/categoryModel.js");
 
 
 const getAllTasks = async (req, res) => {
@@ -43,7 +44,7 @@ const getTaskById = async (req, res) => {
 
 const getTasksByUserId = async (req, res) => {
     //#swagger.tags=['Tasks']
-    //#swagger.description='Gets a specific tasks by the user's ID.'
+    //#swagger.description="Gets a specific tasks by the user's ID."
     
     try {
         // Validate user ID:
@@ -66,6 +67,31 @@ const getTasksByUserId = async (req, res) => {
     }
 }
 
+const getTasksByCategoryId = async (req, res) => {
+    //#swagger.tags=['Tasks']
+    //#swagger.description="Gets a specific tasks by the category's ID."
+    
+    try {
+        // Validate category ID:
+        if (!ObjectId.isValid(req.params.id)) {
+            res.status(400).json("You must use a valid category ID to find a task by category ID.");
+        }
+
+        const categoryId = new ObjectId(req.params.id);
+        const tasks = await Task.find({ categoryId: categoryId });
+
+        if (tasks.length > 0) {
+            res.status(200).json(tasks);
+        } else {
+            res.status(404).json({ error: "Tasks not found." });
+        }
+
+    } catch (err) {
+        console.error("There was an error while fetching the tasks by category ID.", err);
+        res.status(500).json({error: "There was an error while fetching the tasks by category ID."});
+    }
+}
+
 const createTask = async (req, res) => {
     //#swagger.tags=['Tasks']
     //#swagger.description='Creates a new task.'
@@ -77,7 +103,8 @@ const createTask = async (req, res) => {
         dueDate: formatDate(req.body.dueDate),
         priorityLevel: req.body.priorityLevel,
         status: req.body.status,
-        userId: req.session.user._id // Sets userId with session id
+        userId: req.session.user._id, // Sets userId with session id
+        categoryId: req.body.categoryId
       });
 
         await task.save();
@@ -99,6 +126,7 @@ const updateTask = async (req, res) => {
         dueDate: formatDate(req.body.dueDate), 
         priorityLevel: req.body.priorityLevel,
         status: req.body.status,
+        categoryId: req.body.categoryId
     };
 
     try {
@@ -165,6 +193,7 @@ module.exports = {
     getAllTasks,
     getTaskById,
     getTasksByUserId,
+    getTasksByCategoryId,
     createTask,
     updateTask,
     deleteTask

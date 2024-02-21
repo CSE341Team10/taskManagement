@@ -7,7 +7,8 @@ const taskValidationRules = () => {
         body("dueDate").customSanitizer(value => value || "2024-12-31").trim(),
         body("priorityLevel").customSanitizer(value => value || "No-priority").trim(),
         body("status").customSanitizer(value => value || "Pending").trim(),
-        body("userId").isLength({ max: 24 }).trim(),
+        body("userId").isLength({ max: 24 }).withMessage("userId must be a 24 character hex string, or an integer").trim(),
+        body("categoryId").isLength({ max: 24 }).withMessage("categoryId must be a 24 character hex string, or an integer").trim(),
     ]
 };
 
